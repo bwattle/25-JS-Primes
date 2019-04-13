@@ -1,0 +1,62 @@
+<!doctype html>
+<html>
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+    <title>Primes larger</title>
+    <script type='text/javascript'>
+        //developer - Nev Goodyer (teacher: Blackwattle Bay)
+        //V08 - working 8/4/19
+        //inputs NOT validated, big numbers not tested, Primes not in an array
+        //V2 - Primes in an array and in a string
+        function primes() {
+            var primesFound = 0;
+            var arrPrimes = [];
+            var strPrimes = "";
+            var i = 2;
+            var remainder = 0;
+            var factor = false;
+            var prime1 = 0;
+            var prime2 = 0;
+            var lowest = Number(document.getElementById('txtLowest').value);
+            var checkNum = lowest + 1;
+            while (arrPrimes.length < Number(document.getElementById('txtNum').value)) {
+                for (i = 2; i <= Math.sqrt(checkNum); i++) {
+                    remainder = checkNum % i;
+                    if (remainder == 0) {
+                        factor = true;
+                    }
+                }
+                if (factor == false) {
+                    if (arrPrimes.length == 0) {
+                        prime1 = checkNum;
+                        arrPrimes.push(checkNum);
+                        strPrimes = "Text string is: " + arrPrimes[0];
+                        //strPrimes = "Primes are: " + checkNum;
+                    } else {
+                        prime2 = checkNum;
+                        arrPrimes.push(checkNum);
+                        strPrimes = strPrimes + ", " + arrPrimes[(arrPrimes.length - 1)];
+                        //strPrimes = strPrimes + ", " + checkNum;
+                    }
+                }
+                checkNum = checkNum + 1
+                factor = false;
+            }
+            document.getElementById('txtNumbersChecked').value = "The array is: [" + arrPrimes + "]";
+            document.getElementById('txtPrimeList').value = strPrimes;
+        }
+    </script>
+</head>
+<body>
+    <h1>Prime number finder</h1>
+    <p>What number do you want to find Prime numbers above?</p>
+    &nbsp;<input id="txtLowest" type="text">
+    <p>How many primes do you want to find?</p>
+    &nbsp;<input id="txtNum" type="text">
+    <input id="Run" type="Button" value="Find Primes above" onclick="primes()" />
+    <p>The primes as an array are: </p>
+    <textarea id="txtNumbersChecked" rows="5" cols="22"></textarea>
+    <p>The primes as a string are:</p>
+    <textarea id="txtPrimeList" rows="5" cols="22"></textarea>
+</body>
+</html>
