@@ -16,8 +16,6 @@
             var i = 2;
             var remainder = 0;
             var factor = false;
-            var prime1 = 0;
-            var prime2 = 0;
             var lowest = Number(document.getElementById('txtLowest').value);
             var checkNum = lowest + 1;
             while (arrPrimes.length < Number(document.getElementById('txtNum').value)) {
@@ -51,9 +49,10 @@
 <body>
     <h1>Prime number finder</h1>
     <p>What number do you want to find Prime numbers above?</p>
-    &nbsp;<input id="txtLowest" type="text">
+    <input id="txtLowest" type="text">
     <p>How many primes do you want to find?</p>
-    &nbsp;<input id="txtNum" type="text">
+    <input id="txtNum" type="text">
+    <br />
     <input id="Run" type="Button" value="Find Primes above" onclick="primes()" />
     <p>The primes as an array are: </p>
     <textarea id="txtNumbersChecked" rows="5" cols="22"></textarea>
